@@ -22,6 +22,8 @@ Replace my_program with the desired name for the .EXE
 
 
 
-https://github.com/adanilevics/MovementAutomation/assets/110359798/7f635e55-3a3a-4f67-a42e-b4ae6dfa7f76
+https://github.com/adanilevics/MovementAutomation/assets/110359798/0c98b848-c652-4777-9fe3-48c890222f57
+
+
 
 
