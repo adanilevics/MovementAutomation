@@ -5,7 +5,7 @@ To create an executable with the code within main.
 
 while having the terminal in the directory which contains all the files, g++ compiler needs to be installed and set up 
 to ensure that gcc is installed, you can run ```gcc --help```
-,run these commands :
+<br /> if gcc is installed, you can to compile main.cpp to an .exe with these two commands :
 <br />
 <br />```g++ -c -o main.o main.cpp``` 
 <br />```g++ -o my_program mousemove.o main.o -lUser32``` 
