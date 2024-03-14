@@ -79,3 +79,23 @@ void Click(int delayBetweenClicksMs) {
         std::this_thread::sleep_for(std::chrono::milliseconds(delayBetweenClicksMs));
     }
 }
+
+void moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs) {
+
+    HWND activeWindow = GetForegroundWindow();
+    if (activeWindow == NULL) {
+        std::cerr << "Failed to get handle to the active window." << std::endl;
+    }
+
+    // Convert window coordinates to screen coordinates
+    POINT screenPoint = { windowX, windowY };
+    ClientToScreen(activeWindow, &screenPoint);
+
+    // Get the current mouse position
+    POINT currentPosition;
+    GetCursorPos(&currentPosition);
+
+    // Move the mouse from its current position to the specified position within the client area
+    moveMouseRandomCurved(currentPosition.x, currentPosition.y, screenPoint.x, screenPoint.y, durationMs);
+
+}
