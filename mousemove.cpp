@@ -1,10 +1,14 @@
 #include "mousemove.h"
-#include <Windows.h>
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
+#include <thread>
 
+void Wait(int milliseconds) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
+}
 
 void seedRandomGenerator() {
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -56,9 +60,8 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
         SetCursorPos(currentPoint.x, currentPoint.y);
 
         int delay = static_cast<int>(timeInterval * (1 + (rand() % 3 - 1) / 10.0)); // Randomly vary the time interval
-        Sleep(delay);
+        Wait(delay);
     }
 
     SetCursorPos(endX, endY);
 }
-
