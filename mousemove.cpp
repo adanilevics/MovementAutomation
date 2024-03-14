@@ -1,8 +1,10 @@
+#include "mousemove.h"
 #include <Windows.h>
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+
 
 void seedRandomGenerator() {
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -53,40 +55,10 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
         POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing({ startX, startY }, { startX, startY }, { endX, endY }, t, 25.0);
         SetCursorPos(currentPoint.x, currentPoint.y);
 
-        int delay = static_cast<int>(timeInterval * (1 + (rand() % 3 - 1) / 10.0)); // randomly vary the time interval
+        int delay = static_cast<int>(timeInterval * (1 + (rand() % 3 - 1) / 10.0)); // Randomly vary the time interval
         Sleep(delay);
     }
 
     SetCursorPos(endX, endY);
 }
 
-int main() {
-
-    // define start and end coordinates (if needed)
-    int startX = 100;
-    int startY = 100;
-    int endX = 500;
-    int endY = 500;
-
-    // define the duration in milliseconds
-    int durationMs = 600; // 0.6 seconds
-    // duration is randomized, but randomize it anyway before passing it
-
-    moveMouseRandomCurved(startX, startY, endX, endY, durationMs);
-
-    // Get the current mouse position
-    POINT currentPosition1;
-    GetCursorPos(&currentPosition1);
-
-    // Move to three other places based on the current mouse position
-    moveMouseRandomCurved(currentPosition1.x, currentPosition1.y, 300, 200, durationMs);
-    GetCursorPos(&currentPosition1); // recapture the current mouse position
-    moveMouseRandomCurved(currentPosition1.x, currentPosition1.y, 700, 400, durationMs);
-    GetCursorPos(&currentPosition1); // recapture the current mouse position
-    moveMouseRandomCurved(currentPosition1.x, currentPosition1.y, 200, 600, durationMs);
-
-    // for humanlike movement, randomize endx and endy (target position), while
-    // ensuring that the randomized target position still achieves the goal
-
-    return 0;
-}
