@@ -1,4 +1,7 @@
 Human-like mouse movement. Preforms a mouse movement from a start position to a target position, with a randomized delay.
+Clicking with a custom delay between holding down the mouse and letting it go.
+Wait function to add sleeps wherever.
+
 Source main.cpp has a use example, with defined start and target positions, and multiple movements stacked with the use of last mouse position to create one flowing movement.
 
 
