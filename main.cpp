@@ -28,5 +28,8 @@ int main() {
     moveMouseRandomCurved(currentPosition1.x, currentPosition1.y, 200, 600, durationMs);
     Wait(100); // sleep for 100ms (0,1s)
 
+    Click(); // click once
+    Click(100); // 100ms wait between pressing and releasing the mouse button
+
     return 0;
 }

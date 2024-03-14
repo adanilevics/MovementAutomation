@@ -65,3 +65,17 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
 
     SetCursorPos(endX, endY);
 }
+
+
+void Click(int delayBetweenClicksMs) {
+    INPUT input = {0};
+    input.type = INPUT_MOUSE;
+    input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+    SendInput(1, &input, sizeof(INPUT));
+    input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+    SendInput(1, &input, sizeof(INPUT));
+
+    if (delayBetweenClicksMs > 0) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(delayBetweenClicksMs));
+    }
+}
