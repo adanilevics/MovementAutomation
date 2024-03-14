@@ -53,7 +53,7 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
         POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing({ startX, startY }, { startX, startY }, { endX, endY }, t, 25.0);
         SetCursorPos(currentPoint.x, currentPoint.y);
 
-        int delay = static_cast<int>(timeInterval * (1 + (rand() % 3 - 1) / 10.0)); // Randomly vary the time interval
+        int delay = static_cast<int>(timeInterval * (1 + (rand() % 3 - 1) / 10.0)); // randomly vary the time interval
         Sleep(delay);
     }
 
