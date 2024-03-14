@@ -1,4 +1,4 @@
-Create mouse movements by customizing ```main.cpp``` as shown in the examples.
+Create mouse movements by customizing ```main.cpp``` , ```main.cpp``` has examples of how to use all the functions within it.
 
 
 To create an executable with the code within main.
