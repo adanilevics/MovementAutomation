@@ -7,5 +7,5 @@ https://github.com/adanilevics/MovementAutomation/assets/110359798/cb3dcd7c-3775
 
 Create mouse movements by customizing ```main.cpp``` as shown in the examples.
 
-To create an executable with the code within main, run :```g++ -o my_program mousemove.o main.o -lUser32```
+To create an executable with the code within main, run :``` g++ -c -o main.o main.cpp``` and then ```g++ -o my_program mousemove.o main.o -lUser32``` ,replace my_program with the desired name for the .EXE
 while having the terminal in the directory which contains all the files, g++ compiler needs to be installed and set up
