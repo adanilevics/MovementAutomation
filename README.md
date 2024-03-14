@@ -17,3 +17,8 @@ while having the terminal in the directory which contains all the files, g++ com
 
 Replace my_program with the desired name for the .EXE
 
+
+
+https://github.com/adanilevics/MovementAutomation/assets/110359798/7f635e55-3a3a-4f67-a42e-b4ae6dfa7f76
+
+
