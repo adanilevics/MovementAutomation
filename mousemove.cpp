@@ -69,7 +69,7 @@ int main() {
     int endY = 500;
 
     // define the duration in milliseconds
-    int durationMs = 400; // 0.4 seconds
+    int durationMs = 600; // 0.6 seconds
     // duration is randomized, but randomize it anyway before passing it
 
     moveMouseRandomCurved(startX, startY, endX, endY, durationMs);
