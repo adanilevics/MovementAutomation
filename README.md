@@ -64,6 +64,8 @@ Example : Move the mouse to the coordinates (100,100) in the window that is curr
 ```bringWindowToForegroundByInstance(const char* targetWindowTitle, int instanceNumber);``` <br />
 Brings the specified window out of being minimized (if it is), and sets it as the active window. If using multiple windows with the same name, then instance numbers can be used to navigate. The first window is instanceNumer 0, second is instanceNumber 1, third is instanceNumer 2, ect. instanceNumer is 0-index.<br />
 <br />
+Context : Assume we have two windows of task manager open, and we first want to set the first one as active, then the second.
+<br/>
 ```bringWindowToForegroundByInstance("Taskmgr", 0);``` <br />
 ```bringWindowToForegroundByInstance("Taskmgr", 1);``` <br />
 Example : Brings the 1st instance Task manager out of being minimized (if its minimized), and sets it as the currently active window, then does the same to a 2nd instance of task manager after waiting for 0.s2<br />
