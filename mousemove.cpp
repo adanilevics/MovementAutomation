@@ -46,22 +46,34 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
 
     SetCursorPos(startX, startY);
 
-    // calculate the distance to move
+    // Calculate the distance to move
     int dx = endX - startX;
     int dy = endY - startY;
     int steps = std::max(std::abs(dx), std::abs(dy));
 
+    // Calculate the time interval for each step
     double timeInterval = static_cast<double>(durationMs) / steps;
 
-    // perform curved movement with humanized speed
-    for (int i = 0; i <= steps; ++i) {
+    POINT lastPoint = {startX, startY};
+    for (int i = 1; i <= steps; ++i) {
         double t = static_cast<double>(i) / steps;
 
-        POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing({ startX, startY }, { startX, startY }, { endX, endY }, t, 25.0);
+        POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing({startX, startY}, {startX, startY}, {endX, endY}, t, 25.0);
+        
         SetCursorPos(currentPoint.x, currentPoint.y);
 
-        int delay = static_cast<int>(timeInterval * (1 + (rand() % 3 - 1) / 10.0)); // Randomly vary the time interval
-        Wait(delay);
+        // Calculate the distance between the last and current points
+        int dx = currentPoint.x - lastPoint.x;
+        int dy = currentPoint.y - lastPoint.y;
+        double distance = std::sqrt(dx * dx + dy * dy);
+
+        // Calculate the time required for this step
+        int stepDurationMs = static_cast<int>(distance / steps / timeInterval * durationMs);
+
+        // Wait for the calculated time
+        Wait(stepDurationMs);
+
+        lastPoint = currentPoint;
     }
 
     SetCursorPos(endX, endY);
