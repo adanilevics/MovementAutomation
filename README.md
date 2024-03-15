@@ -16,9 +16,6 @@ Replace my_program with the desired name for the .EXE
 
 If you are having trouble compiling, running the command ```g++ -c mousemove.cpp -o mousemove.o``` could resolve the issue
 <br /> Otherwise ,ensure that gcc is correctly installed and set up.
-
-### Available functions
-
 <br />
 
 ## Moving the mouse
