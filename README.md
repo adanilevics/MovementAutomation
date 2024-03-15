@@ -28,7 +28,9 @@ If you are having trouble compiling, running the command ```g++ -c mousemove.cpp
 ```Wait(2000);``` Example : waits for 2000ms, aka 2 seconds
 <br />
 <br />
-```Click(int delayBetweenClicksMs = 0);```
+```Click(int delayBetweenClicksMs = 0);```   Click (press the mouse button and let go) with a option to specify the amount of time between pressing and letting go the mouse
+<br />
+```Click(100);``` Example : Click, with the delay between pressing the mouse and letting it go being 100ms, aka 0.1s
 <br />
 <br />
 ```moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs);```
