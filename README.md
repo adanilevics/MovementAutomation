@@ -20,6 +20,9 @@ If you are having trouble compiling, running the command ```g++ -c mousemove.cpp
 ### Available functions
 
 <br />
+
+## Moving the mouse
+
 Move the mouse using a random, curved path from the specified start coordinates, to the specified end coordinates  on the screen over the given duration <br />
 ```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```  <br />
 <br />
@@ -27,6 +30,9 @@ Move the mouse using a random, curved path from the specified start coordinates,
 Example : Move the mouse from (200,200) to (400,400) on the screen over a duration of 5000ms, aka 5 seconds<br />
 <br/>
 <br />
+
+## Sleep
+
 ```Wait(int milliseconds);```  <br />
 Wait or sleep for the specified amount in ms  <br />
 <br />
@@ -34,6 +40,9 @@ Wait or sleep for the specified amount in ms  <br />
 Example : waits for 2000ms, aka 2 seconds<br />
 <br />
 <br />
+
+## Click
+
 ```Click(int delayBetweenClicksMs = 0);```   <br />
 Click (press the mouse button and let go) with a option to specify the amount of time between pressing and letting go the mouse<br />
 <br />
@@ -41,6 +50,9 @@ Click (press the mouse button and let go) with a option to specify the amount of
 Example : Click, with the delay between pressing the mouse and letting it go being 100ms, aka 0.1s<br />
 <br />
 <br />
+
+## Moving the mouse within an active window
+
 ```moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs);```   <br />
 Move the mouse using a random, curved path from the current mouse location, to the specified coordinates within a window/client<br />
 <br />
@@ -48,6 +60,9 @@ Move the mouse using a random, curved path from the current mouse location, to t
 Example : Move the mouse to the coordinates (100,100) in the window that is currently active, over a period of 1500ms, aka 1.5s<br />
 <br />
 <br />
+
+## Setting a window as active
+
 ```bringWindowToForegroundByInstance(const char* targetWindowTitle, int instanceNumber);``` <br />
 Brings the specified window out of being minimized (if it is), and sets it as the active window. If using multiple windows with the same name, then instance numbers can be used to navigate. The first window is instanceNumer 0, second is instanceNumber 1, third is instanceNumer 2, ect. instanceNumer is 0-index.<br />
 <br />
