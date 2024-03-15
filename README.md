@@ -24,17 +24,17 @@ Human-like mouse movement. Preforms a mouse movement from a start position to a 
 Clicking with a custom delay between holding down the mouse and letting it go.
 Wait function to add sleeps wherever.
 
-<br />
-<br />
-
 https://github.com/adanilevics/MovementAutomation/assets/110359798/cb3dcd7c-3775-4aab-8269-ae1caf1ec6d9
+
+<br /><br /><br /><br />
+
 
 Moving within an active window, based on the window client coordinates.
 
-<br />
-<br />
-
 https://github.com/adanilevics/MovementAutomation/assets/110359798/ba5fddf9-d28d-4e9a-913f-b34524d71a79
+
+<br /><br /><br /><br />
+
 
 Switching between multiple windows to move mouse in the same window based coordinates.
 
