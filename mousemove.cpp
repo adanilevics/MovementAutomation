@@ -48,17 +48,14 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
 
     SetCursorPos(startX, startY);
 
-    // Calculate the distance to move
     int dx = endX - startX;
     int dy = endY - startY;
     double distance = std::sqrt(dx * dx + dy * dy);
 
-    // Calculate the time interval for each step
     double timeInterval = static_cast<double>(durationMs) / distance;
 
     auto startTime = std::chrono::steady_clock::now();
 
-    // Move the mouse along the path with smooth swerves
     while (true) {
         auto currentTime = std::chrono::steady_clock::now();
         double elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
@@ -69,12 +66,10 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
             break;
         }
 
-        // Calculate the current position based on elapsed time
         double t = elapsedTime / durationMs;
         int currentX = startX + static_cast<int>(t * dx);
         int currentY = startY + static_cast<int>(t * dy);
 
-        // Add smooth swerves
         int swerveX = static_cast<int>(10 * std::sin(t * M_PI));
         int swerveY = static_cast<int>(10 * std::cos(t * M_PI));
 
@@ -84,17 +79,9 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
 
         SetCursorPos(currentX, currentY);
 
-        // Wait for a short interval before the next step
         Wait(10);
     }
 }
-
-
-
-
-
-
-
 
 void Click(int delayBetweenClicksMs) {
     INPUT input = {0};
