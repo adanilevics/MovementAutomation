@@ -30,7 +30,9 @@ Moving within an active window, based on the window client coordinates.
 
 https://github.com/adanilevics/MovementAutomation/assets/110359798/ba5fddf9-d28d-4e9a-913f-b34524d71a79
 
+Switching between multiple windows to move mouse in the same window based coordinates.
 
+https://github.com/adanilevics/MovementAutomation/assets/110359798/405b7148-73d2-4f12-ae3b-c17e753eb9b1
 
 
 
