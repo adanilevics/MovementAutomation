@@ -71,7 +71,9 @@ Context : Assume we have two windows of task manager open, and we first want to 
 ```bringWindowToForegroundByInstance("Task Manager", 1);``` <br />
 Example : Brings the 1st instance Task manager out of being minimized (if its minimized), and sets it as the currently active window, then does the same to a 2nd instance of task manager after waiting for 0.s2<br />
 <br />
-Window names are without their file extension, without .exe or other.
+Window names are without their file extension, without .exe or other
+<br />
+If you are unsure of the window name, have a look at the open processes in task manager and simply use their name
 
 <br />
 <br />
