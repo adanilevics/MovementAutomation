@@ -20,8 +20,8 @@ If you are having trouble compiling, running the command ```g++ -c mousemove.cpp
 ### Available functions
 
 <br />
-```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```  <br />
 Move the mouse using a random, curved path from the specified start coordinates, to the specified end coordinates  on the screen over the given duration <br />
+```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```  <br />
 <br />
 ```moveMouseRandomCurved(200, 200, 400, 400, 5000);``` <br />
 Example : Move the mouse from (200,200) to (400,400) on the screen over a duration of 5000ms, aka 5 seconds<br />
