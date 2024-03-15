@@ -1,11 +1,10 @@
 #include "mousemove.h"
-#include <Windows.h>
 #include <iostream>
 
 
 int main() {
 
-
+    
     Wait(1000);
 
     int startX = 100;
@@ -45,7 +44,21 @@ int main() {
     // move to the windowX and windowY positions in the active window using client coordinates
     moveMouseRandomCurvedClient(windowX, windowY, 600);
 
-    Wait(5000);
+
+    Wait(1000);
+    // Bring the first instance of the target window to the foreground if it exists
+    bringWindowToForegroundByInstance("WindowName", 0);
+    std::cout << "Bringing up instance 1 of WindowName" << std::endl; 
+    std::cout << "Moving to 560,480 within the active window" << std::endl; 
+    moveMouseRandomCurvedClient(windowX, windowY, durationMs);
+
+    Wait(1000);
+    // Bring the second instance of the target window to the foreground if it exists
+    bringWindowToForegroundByInstance("WindowName", 1);
+    std::cout << "Bringing up instance 1 of WindowName" << std::endl; 
+    std::cout << "Moving to 560,480 within the active window" << std::endl; 
+    moveMouseRandomCurvedClient(windowX, windowY, durationMs);
+
 
     return 0;
 }

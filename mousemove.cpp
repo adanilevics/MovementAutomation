@@ -5,6 +5,7 @@
 #include <ctime>
 #include <chrono>
 #include <thread>
+#include <vector>
 
 void Wait(int milliseconds) {
     std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
@@ -98,4 +99,46 @@ void moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs) {
     // Move the mouse from its current position to the specified position within the client area
     moveMouseRandomCurved(currentPosition.x, currentPosition.y, screenPoint.x, screenPoint.y, durationMs);
 
+}
+
+// Global variable to store the handles of all instances of the target window
+std::vector<HWND> targetWindowInstances;
+
+// Callback function for EnumWindows
+BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
+    char windowTitle[256];
+    GetWindowTextA(hwnd, windowTitle, sizeof(windowTitle));
+    std::string title = windowTitle;
+    std::string targetWindowTitle = reinterpret_cast<const char*>(lParam);
+    if (title.find(targetWindowTitle) != std::string::npos) {
+        // Add the handle to the list of target window instances
+        targetWindowInstances.push_back(hwnd);
+    }
+    return TRUE; // Continue enumeration
+}
+
+// Function to bring the specified window to the foreground by its handle
+void bringWindowToForeground(HWND windowHandle) {
+    // Bring the window to the foreground
+    SetForegroundWindow(windowHandle);
+}
+
+// Function to bring the target window instance with the specified index to the foreground
+void bringWindowToForegroundByInstance(const char* targetWindowTitle, int instanceNumber) {
+    // Enumerate through windows to find all instances of the target window
+    targetWindowInstances.clear(); // Clear previous instances
+    EnumWindows(EnumWindowsProc, reinterpret_cast<LPARAM>(targetWindowTitle));
+
+    if (instanceNumber >= 0 && instanceNumber < targetWindowInstances.size()) {
+        HWND windowHandle = targetWindowInstances[instanceNumber];
+        // Restore the window if it is minimized
+        if (IsIconic(windowHandle)) {
+            ShowWindow(windowHandle, SW_RESTORE);
+        }
+        // Bring the window to the foreground
+        SetForegroundWindow(windowHandle);
+    } else {
+        std::cerr << "Invalid instance number." << std::endl;
+    }
+    Wait(200);
 }
