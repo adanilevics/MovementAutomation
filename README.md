@@ -71,7 +71,7 @@ Example : Brings the 0th instance Task manager out of being minimized (if its mi
 
 ## Demo
 
-Moving the mouse
+Moving the mouse <br />
 https://github.com/adanilevics/MovementAutomation/assets/110359798/0c98b848-c652-4777-9fe3-48c890222f57
 
 
