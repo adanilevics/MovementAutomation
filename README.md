@@ -16,6 +16,20 @@ If you are having trouble compiling, running the command ```g++ -c mousemove.cpp
 <br /> Otherwise ,ensure that gcc is correctly installed and set up.
 
 
+<br /> Available functions <br />
+```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```
+<br/>
+```Wait(int milliseconds);```   
+Wait or sleep for the specified amount in ms
+```Wait(2000);``` Example : waits for 2000ms, aka 2 seconds
+<br />
+```Click(int delayBetweenClicksMs = 0);```
+<br />
+```moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs);```
+<br />
+```bringWindowToForegroundByInstance(const char* targetWindowTitle, int instanceNumber);```
+<br />
+
 
 
 https://github.com/adanilevics/MovementAutomation/assets/110359798/0c98b848-c652-4777-9fe3-48c890222f57
