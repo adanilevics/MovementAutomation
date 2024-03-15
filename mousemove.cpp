@@ -52,8 +52,6 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
     int dy = endY - startY;
     double distance = std::sqrt(dx * dx + dy * dy);
 
-    double timeInterval = static_cast<double>(durationMs) / distance;
-
     auto startTime = std::chrono::steady_clock::now();
 
     while (true) {
@@ -67,17 +65,10 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
         }
 
         double t = elapsedTime / durationMs;
-        int currentX = startX + static_cast<int>(t * dx);
-        int currentY = startY + static_cast<int>(t * dy);
+        POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing(
+            {startX, startY}, {startX + dx / 2, startY + dy / 2}, {endX, endY}, t, 10.0);
 
-        int swerveX = static_cast<int>(10 * std::sin(t * M_PI));
-        int swerveY = static_cast<int>(10 * std::cos(t * M_PI));
-
-        // Update the current position with swerves
-        currentX += swerveX;
-        currentY += swerveY;
-
-        SetCursorPos(currentX, currentY);
+        SetCursorPos(currentPoint.x, currentPoint.y);
 
         Wait(10);
     }
