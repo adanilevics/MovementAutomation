@@ -75,7 +75,7 @@ Creating an executable from the main.cpp code
 
 https://github.com/adanilevics/MovementAutomation/assets/110359798/0c98b848-c652-4777-9fe3-48c890222f57
 
-
+<br/> <br/>
 Moving the mouse
 
 https://github.com/adanilevics/MovementAutomation/assets/110359798/9da111e8-9eaf-4a01-930c-7103378bce3b
