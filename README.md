@@ -10,7 +10,7 @@ Open the terminal in the directory which contains all the files. <br />
 <br />```g++ -c -o main.o main.cpp``` 
 <br />```g++ -o my_program mousemove.o main.o -lUser32``` 
 
-<br /> If you are having trouble compiling, running the command ```g++ -c mousemove.cpp -o mousemove.o``` could resolve the issue
+If you are having trouble compiling, running the command ```g++ -c mousemove.cpp -o mousemove.o``` could resolve the issue
 <br /> Otherwise ,ensure that gcc is correctly installed and set up.
 
 Replace my_program with the desired name for the .EXE
