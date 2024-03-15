@@ -18,27 +18,32 @@ If you are having trouble compiling, running the command ```g++ -c mousemove.cpp
 
 <br /> Available functions: <br />
 <br />
-```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```   Move the mouse using a random, curved path from the specified start coordinates, to the specified end coordinates  on the screen over the given duration
+```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```  <br /> 
+Move the mouse using a random, curved path from the specified start coordinates, to the specified end coordinates  on the screen over the given duration
 <br />
 ```moveMouseRandomCurved(200, 200, 400, 400, 5000);``` Example : Move the mouse from (200,200) to (400,400) on the screen over a duration of 5000ms, aka 5 seconds
 <br/>
 <br />
-```Wait(int milliseconds);```   Wait or sleep for the specified amount in ms 
+```Wait(int milliseconds);```  <br />
+Wait or sleep for the specified amount in ms 
 <br />
 ```Wait(2000);``` Example : waits for 2000ms, aka 2 seconds
 <br />
 <br />
-```Click(int delayBetweenClicksMs = 0);```   Click (press the mouse button and let go) with a option to specify the amount of time between pressing and letting go the mouse
+```Click(int delayBetweenClicksMs = 0);```   <br />
+Click (press the mouse button and let go) with a option to specify the amount of time between pressing and letting go the mouse
 <br />
 ```Click(100);``` Example : Click, with the delay between pressing the mouse and letting it go being 100ms, aka 0.1s
 <br />
 <br />
-```moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs);```   Move the mouse using a random, curved path from the current mouse location, to the specified coordinates within a window/client
+```moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs);```   <br />
+Move the mouse using a random, curved path from the current mouse location, to the specified coordinates within a window/client
 <br />
 ```moveMouseRandomCurvedClient(100, 100, 1500);``` Example : Move the mouse to the coordinates (100,100) in the window that is currently active, over a period of 1500ms, aka 1.5s
 <br />
 <br />
-```bringWindowToForegroundByInstance(const char* targetWindowTitle, int instanceNumber);``` Brings the specified window out of being minimized (if it is), and sets it as the active window. If using multiple windows with the same name, then instance numbers can be used to navigate. The first window is instanceNumer 0, second is instanceNumber 1, third is instanceNumer 2, ect. instanceNumer is 0-index.
+```bringWindowToForegroundByInstance(const char* targetWindowTitle, int instanceNumber);``` <br />
+Brings the specified window out of being minimized (if it is), and sets it as the active window. If using multiple windows with the same name, then instance numbers can be used to navigate. The first window is instanceNumer 0, second is instanceNumber 1, third is instanceNumer 2, ect. instanceNumer is 0-index.
 <br />
 ```bringWindowToForegroundByInstance("Taskmgr", 0);``` Example : Brings the 0th instance Task manager out of being minimized (if its minimized), and sets it as the currently active window
 <br />
