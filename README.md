@@ -28,7 +28,9 @@ Human-like mouse movement. Preforms a mouse movement from a start position to a 
 Clicking with a custom delay between holding down the mouse and letting it go.
 Wait function to add sleeps wherever.
 
-https://github.com/adanilevics/MovementAutomation/assets/110359798/cb3dcd7c-3775-4aab-8269-ae1caf1ec6d9
+
+https://github.com/adanilevics/MovementAutomation/assets/110359798/9da111e8-9eaf-4a01-930c-7103378bce3b
+
 
 <br /><br /><br /><br />
 
