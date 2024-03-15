@@ -3,8 +3,8 @@ Create your own mouse automation program by customizing ```main.cpp``` , ```main
 
 To create an executable from the code written in ```main.cpp```:
 
-Open the terminal in the directory which contains all the files, g++ compiler needs to be installed and set up 
-to ensure that gcc is installed, you can run ```gcc --help```
+Open the terminal in the directory which contains all the files ,g++ compiler needs to be installed and set up 
+,to ensure that gcc is installed, you can run ```gcc --help```
 <br /> <br />If gcc is installed, you can to compile main.cpp to an .exe with these two commands :
 <br />
 <br />```g++ -c -o main.o main.cpp``` 
