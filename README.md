@@ -1,5 +1,6 @@
 Create your own mouse automation program by customizing ```main.cpp``` , ```main.cpp``` has examples of how to use all the functions within it.
 
+### Compiling and creating an executable
 
 To create an executable from the code written in ```main.cpp```:
 
@@ -11,12 +12,13 @@ Open the terminal in the directory which contains all the files. <br />
 <br />```g++ -o my_program mousemove.o main.o -lUser32``` 
 Replace my_program with the desired name for the .EXE
 
+### Troubleshooting note
 
 If you are having trouble compiling, running the command ```g++ -c mousemove.cpp -o mousemove.o``` could resolve the issue
 <br /> Otherwise ,ensure that gcc is correctly installed and set up.
 
+### Available functions
 
-<br /> Available functions: <br />
 <br />
 ```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```  <br />
 Move the mouse using a random, curved path from the specified start coordinates, to the specified end coordinates  on the screen over the given duration <br />
