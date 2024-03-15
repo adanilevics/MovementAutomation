@@ -17,6 +17,7 @@ Replace my_program with the desired name for the .EXE
 If you are having trouble compiling, running the command ```g++ -c mousemove.cpp -o mousemove.o``` could resolve the issue
 <br /> Otherwise ,ensure that gcc is correctly installed and set up.
 <br />
+<br />
 
 ## Moving the mouse
 
@@ -68,17 +69,10 @@ Example : Brings the 0th instance Task manager out of being minimized (if its mi
 <br />
 <br />
 
+## Demo
 
-
+Moving the mouse
 https://github.com/adanilevics/MovementAutomation/assets/110359798/0c98b848-c652-4777-9fe3-48c890222f57
-
-
-
-Source main.cpp has a use examples, with defined start and target positions, and multiple movements stacked with the use of last mouse position to create one flowing movement.
-
-Human-like mouse movement. Preforms a mouse movement from a start position to a target position, with a randomized delay.
-Clicking with a custom delay between holding down the mouse and letting it go.
-Wait function to add sleeps wherever.
 
 
 https://github.com/adanilevics/MovementAutomation/assets/110359798/9da111e8-9eaf-4a01-930c-7103378bce3b
