@@ -20,11 +20,13 @@ If you are having trouble compiling, running the command ```g++ -c mousemove.cpp
 <br />
 ```moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs); ```
 Move the mouse using a random, curved path from the specified start coordinates, to the specified end coordinates over the given duration
+<br />
 ```moveMouseRandomCurved(200, 200, 400, 400, 5000);``` Example : Move the mouse from (200,200) to (400,400) on the screen over a duration of 5000ms, aka 5 seconds
 <br/>
 <br />
 ```Wait(int milliseconds);```   
-Wait or sleep for the specified amount in ms
+Wait or sleep for the specified amount in ms 
+<br />
 ```Wait(2000);``` Example : waits for 2000ms, aka 2 seconds
 <br />
 <br />
