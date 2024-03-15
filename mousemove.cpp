@@ -7,6 +7,9 @@
 #include <thread>
 #include <vector>
 
+#define M_PI 3.14159265358979323846
+
+
 void Wait(int milliseconds) {
     std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
 }
@@ -40,7 +43,6 @@ POINT calculateQuadraticBezierPointWithNoiseAndSmoothing(POINT p0, POINT p1, POI
     return result;
 }
 
-
 void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs) {
     seedRandomGenerator();
 
@@ -49,35 +51,49 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
     // Calculate the distance to move
     int dx = endX - startX;
     int dy = endY - startY;
-    int steps = std::max(std::abs(dx), std::abs(dy));
+    double distance = std::sqrt(dx * dx + dy * dy);
 
     // Calculate the time interval for each step
-    double timeInterval = static_cast<double>(durationMs) / steps;
+    double timeInterval = static_cast<double>(durationMs) / distance;
 
-    POINT lastPoint = {startX, startY};
-    for (int i = 1; i <= steps; ++i) {
-        double t = static_cast<double>(i) / steps;
+    auto startTime = std::chrono::steady_clock::now();
 
-        POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing({startX, startY}, {startX, startY}, {endX, endY}, t, 25.0);
-        
-        SetCursorPos(currentPoint.x, currentPoint.y);
+    // Move the mouse along the path with smooth swerves
+    while (true) {
+        auto currentTime = std::chrono::steady_clock::now();
+        double elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
 
-        // Calculate the distance between the last and current points
-        int dx = currentPoint.x - lastPoint.x;
-        int dy = currentPoint.y - lastPoint.y;
-        double distance = std::sqrt(dx * dx + dy * dy);
+        if (elapsedTime >= durationMs) {
+            // Time elapsed, move to the end position and exit the loop
+            SetCursorPos(endX, endY);
+            break;
+        }
 
-        // Calculate the time required for this step
-        int stepDurationMs = static_cast<int>(distance / steps / timeInterval * durationMs);
+        // Calculate the current position based on elapsed time
+        double t = elapsedTime / durationMs;
+        int currentX = startX + static_cast<int>(t * dx);
+        int currentY = startY + static_cast<int>(t * dy);
 
-        // Wait for the calculated time
-        Wait(stepDurationMs);
+        // Add smooth swerves
+        int swerveX = static_cast<int>(10 * std::sin(t * M_PI));
+        int swerveY = static_cast<int>(10 * std::cos(t * M_PI));
 
-        lastPoint = currentPoint;
+        // Update the current position with swerves
+        currentX += swerveX;
+        currentY += swerveY;
+
+        SetCursorPos(currentX, currentY);
+
+        // Wait for a short interval before the next step
+        Wait(10);
     }
-
-    SetCursorPos(endX, endY);
 }
+
+
+
+
+
+
 
 
 void Click(int delayBetweenClicksMs) {

@@ -13,7 +13,7 @@ int main() {
     int endY = 500;
 
     // Define the duration in milliseconds
-    int durationMs = 600; // 0.6 seconds
+    int durationMs = 1600; // 0.6 seconds
 
     // Call moveMouseRandomCurved function
     moveMouseRandomCurved(startX, startY, endX, endY, durationMs);
