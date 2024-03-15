@@ -26,7 +26,7 @@ Example : Move the mouse from (200,200) to (400,400) on the screen over a durati
 <br/>
 <br />
 ```Wait(int milliseconds);```  <br />
-Wait or sleep for the specified amount in ms 
+Wait or sleep for the specified amount in ms  <br />
 <br />
 ```Wait(2000);``` <br />
 Example : waits for 2000ms, aka 2 seconds<br />
