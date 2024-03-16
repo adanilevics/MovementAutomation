@@ -102,7 +102,8 @@ https://github.com/adanilevics/MovementAutomation/assets/110359798/ba5fddf9-d28d
 
 Switching between multiple windows to move mouse in the same window based coordinates.
 
-https://github.com/adanilevics/MovementAutomation/assets/110359798/405b7148-73d2-4f12-ae3b-c17e753eb9b1
+https://github.com/adanilevics/MovementAutomation/assets/110359798/40258d20-513f-4911-b5e5-768d6c6eaa21
+
 
 
 
