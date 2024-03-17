@@ -6,8 +6,8 @@
 #include <chrono>
 #include <thread>
 #include <vector>
+#include <algorithm>
 
-#define M_PI 3.14159265358979323846
 
 
 void Wait(int milliseconds) {
@@ -25,23 +25,36 @@ POINT getRandomPointInRange(int minX, int minY, int maxX, int maxY) {
     return result;
 }
 
-POINT calculateQuadraticBezierPointWithNoiseAndSmoothing(POINT p0, POINT p1, POINT p2, double t, double noiseFactor) {
+POINT interpolatePoints(POINT start, POINT end, double t) {
     POINT result;
+    result.x = start.x + static_cast<int>((end.x - start.x) * t);
+    result.y = start.y + static_cast<int>((end.y - start.y) * t);
+    return result;
+}
+
+POINT calculateQuadraticBezierPointWithNoiseAndSmoothing(POINT p0, POINT p1, POINT p2, double t, double noiseFactor, double smoothingFactor) {
+    POINT result;
+    
+    // Generate random noise for control points
     double noiseX = (rand() % 100 - 50) / 100.0 * noiseFactor;
     double noiseY = (rand() % 100 - 50) / 100.0 * noiseFactor;
 
-    static POINT controlPoint = getRandomPointInRange(p0.x - 50, p0.y - 50, p2.x + 50, p2.y + 50);
-
-    static POINT smoothedControlPoint = controlPoint; 
-    smoothedControlPoint.x = 0.99 * smoothedControlPoint.x + 0.01 * noiseX; 
-    smoothedControlPoint.y = 0.99 * smoothedControlPoint.y + 0.01 * noiseY;
+    // Update control points with noise and smoothing
+    static POINT controlPoint1 = p1;
+    static POINT controlPoint2 = p1;
+    controlPoint1.x = p1.x + (controlPoint1.x - p1.x) * smoothingFactor + noiseX;
+    controlPoint1.y = p1.y + (controlPoint1.y - p1.y) * smoothingFactor + noiseY;
+    controlPoint2.x = p1.x + (controlPoint2.x - p1.x) * smoothingFactor + noiseX;
+    controlPoint2.y = p1.y + (controlPoint2.y - p1.y) * smoothingFactor + noiseY;
 
     double u = 1.0 - t;
-    result.x = static_cast<int>(u * u * p0.x + 2 * u * t * smoothedControlPoint.x + t * t * p2.x);
-    result.y = static_cast<int>(u * u * p0.y + 2 * u * t * smoothedControlPoint.y + t * t * p2.y);
+    result.x = static_cast<int>(u * u * p0.x + 2 * u * t * controlPoint1.x + t * t * p2.x);
+    result.y = static_cast<int>(u * u * p0.y + 2 * u * t * controlPoint1.y + t * t * p2.y);
 
     return result;
 }
+
+
 
 void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durationMs) {
     seedRandomGenerator();
@@ -54,24 +67,40 @@ void moveMouseRandomCurved(int startX, int startY, int endX, int endY, int durat
 
     auto startTime = std::chrono::steady_clock::now();
 
-    while (true) {
-        auto currentTime = std::chrono::steady_clock::now();
-        double elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
+    bool useBezierCurve = rand() % 2 == 0; // Randomly choose between using Bezier curve or interpolation
 
-        if (elapsedTime >= durationMs) {
-            // Time elapsed, move to the end position and exit the loop
-            SetCursorPos(endX, endY);
-            break;
+    POINT currentPoint;
+
+    if (useBezierCurve) {
+        for (double t = 0.0; t <= 1.0; t += 0.01) {
+            currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing(
+                {startX, startY}, {startX + dx / 2, startY + dy / 2}, {endX, endY}, t, 10.0, 0.99);
+            SetCursorPos(currentPoint.x, currentPoint.y);
+            Wait(10);
         }
+    } else {
+        const double totalTime = static_cast<double>(durationMs);
+        while (true) {
+            auto currentTime = std::chrono::steady_clock::now();
+            double elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
+            double t = elapsedTime / totalTime;
 
-        double t = elapsedTime / durationMs;
-        POINT currentPoint = calculateQuadraticBezierPointWithNoiseAndSmoothing(
-            {startX, startY}, {startX + dx / 2, startY + dy / 2}, {endX, endY}, t, 10.0);
+            if (t >= 1.0) {
+                SetCursorPos(endX, endY);
+                break;
+            }
 
-        SetCursorPos(currentPoint.x, currentPoint.y);
+            double ease = 0.5 - 0.5 * cos(3.14159265358979323846 * t); // Cosine easing function for smoother movement
 
-        Wait(10);
+            currentPoint = interpolatePoints({startX, startY}, {endX, endY}, ease);
+
+            SetCursorPos(currentPoint.x, currentPoint.y);
+            Wait(10);
+        }
     }
+
+    // Ensure the cursor reaches the end position
+    SetCursorPos(endX, endY);
 }
 
 void Click(int delayBetweenClicksMs) {
@@ -106,6 +135,7 @@ void moveMouseRandomCurvedClient(int windowX, int windowY, int durationMs) {
     moveMouseRandomCurved(currentPosition.x, currentPosition.y, screenPoint.x, screenPoint.y, durationMs);
 
 }
+
 
 // Global variable to store the handles of all instances of the target window
 std::vector<HWND> targetWindowInstances;
