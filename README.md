@@ -9,7 +9,7 @@ Open the terminal in the directory which contains all the files. <br />
 <br /> <br />If gcc is installed, you can to compile main.cpp to an .exe with these two commands :
 <br />
 <br />```g++ -c -o main.o main.cpp``` 
-<br />```g++ -o my_program mousemove.cpp main.cpp -lUser32 -lgdi32``` 
+<br />```g++ -o my_program mousemove.cpp main.cpp -lUser32 -lgdi32``` <br />
 Replace my_program with the desired name for the .EXE
 
 ### Troubleshooting note
